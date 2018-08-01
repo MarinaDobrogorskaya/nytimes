@@ -1,0 +1,10 @@
+@import "../../styles";
+footer {
+  display: flex;
+  height: 48px;
+  background-color: $primary-color;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-size: small;
+}
