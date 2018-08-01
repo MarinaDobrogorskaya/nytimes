@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {FormControl} from '@angular/forms';
 
 
@@ -8,13 +8,14 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./header.component.scss'],
   providers: []
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   public languages = ['EN', 'RU', 'UA'];
-  public isActiveArt: boolean;
+  public isActiveArt = true;
   public isActiveBest: boolean;
   constructor() { }
   public language = new FormControl('EN');
-  ngOnInit() {
+  isActive(name): void {
+    this.isActiveArt = name === 'a';
+    this.isActiveBest = name === 'b';
   }
-
 }

@@ -2,7 +2,7 @@
 <header>
   <mat-toolbar color="primary">
     <span>NYT</span>
-    <nav class="nav-btns">
+    <nav class="large-only nav-btns">
       <button mat-button [routerLink]="['/articles']">Articles</button>
       <button mat-button [routerLink]="['/best']">The Best</button>
     </nav>
@@ -14,12 +14,15 @@
       </mat-select>
     </div>
   </mat-toolbar>
-  <div class="nav-tabs">
+  <div class="small-only nav-tabs">
     <nav mat-tab-nav-bar backgroundColor="primary" color="accent">
       <a mat-tab-link [routerLink]="['/articles']"
-              #tabLink
+              (click)="isActive('a')"
+              [active]="isActiveArt"
       >Articles</a>
       <a mat-tab-link [routerLink]="['/best']"
+              (click)="isActive('b')"
+              [active]="isActiveBest"
       >The Best</a>
     </nav>
   </div>

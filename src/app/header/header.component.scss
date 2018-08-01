@@ -25,16 +25,17 @@ header {
     font-size: medium;
   }
 }
-.nav-tabs {
+.small-only {
   display: none;
 }
-
 @media screen and (max-width: 400px){
-  .nav-btns {
+  .small-only {
+    display: block;
+  }
+  .large-only {
     display: none;
   }
   .nav-tabs {
-    display: block;
     a {
       width: 50%;
       opacity: 1;
