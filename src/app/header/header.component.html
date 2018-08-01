@@ -14,9 +14,11 @@
     </div>
   </mat-toolbar>
   <div class="nav-tabs">
-    <nav mat-tab-nav-bar backgroundColor="primary">
-      <a mat-tab-link>Articles</a>
-      <a mat-tab-link>The Best</a>
+    <nav mat-tab-nav-bar backgroundColor="primary"  color="accent">
+      <a mat-tab-link (click)="isActiveArt = true; isActiveBest = false"
+         [active]="isActiveArt">Articles</a>
+      <a mat-tab-link (click)="isActiveBest = true; isActiveArt = false"
+         [active]="isActiveBest">The Best</a>
     </nav>
   </div>
 </header>

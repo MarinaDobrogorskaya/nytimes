@@ -9,6 +9,8 @@ import {FormControl} from '@angular/forms';
 })
 export class HeaderComponent implements OnInit {
   public languages = ['EN', 'RU', 'UA'];
+  public isActiveArt: boolean;
+  public isActiveBest: boolean;
   constructor() { }
   public language = new FormControl('EN');
   ngOnInit() {
