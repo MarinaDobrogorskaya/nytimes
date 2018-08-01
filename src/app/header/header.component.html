@@ -15,10 +15,12 @@
   </mat-toolbar>
   <div class="nav-tabs">
     <nav mat-tab-nav-bar backgroundColor="primary" color="accent">
-      <a mat-tab-link (click)="isActiveArt = true; isActiveBest = false"
-         [active]="isActiveArt">Articles</a>
-      <a mat-tab-link (click)="isActiveBest = true; isActiveArt = false"
-         [active]="isActiveBest">The Best</a>
+      <button mat-tab-link [routerLink]="['/articles']"
+              routerLinkActive="active"
+      >Articles</button>
+      <button mat-tab-link [routerLink]="['/best']"
+              routerLinkActive="active"
+      >The Best</button>
     </nav>
   </div>
 </header>
