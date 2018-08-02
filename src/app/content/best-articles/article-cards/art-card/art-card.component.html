@@ -1,3 +1,9 @@
-<p>
-  art-card works!
-</p>
+<div class="card">
+  <mat-card>
+    <img mat-card-image [src]="articleData.img">
+    <mat-card-content>
+      <mat-card-title><a [href]="articleData.url">{{articleData.title}}</a></mat-card-title>
+      <p>{{articleData.description}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

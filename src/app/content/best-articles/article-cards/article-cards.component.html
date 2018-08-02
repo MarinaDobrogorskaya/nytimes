@@ -1,3 +1,6 @@
-<p>
-  article-cards works!
-</p>
+<div class="column">
+  <div *ngFor="let article of articles;" class="card">
+    <app-art-card [articleData]="article"></app-art-card>
+  </div>
+</div>
+

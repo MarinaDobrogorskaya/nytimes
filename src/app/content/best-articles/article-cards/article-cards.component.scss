@@ -1,0 +1,26 @@
+.column {
+  padding: 0 16px;
+}
+.card {
+  float: left;
+}
+@media screen and (max-width: 464px) {
+  .card {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 464px) and (max-width: 896px){
+  .card {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 896px) and (max-width: 1328px){
+  .card {
+    width: (100%/3);
+  }
+}
+@media screen and (min-width: 1328px) and (max-width: 2160px){
+  .card {
+    width: 25%;
+  }
+}

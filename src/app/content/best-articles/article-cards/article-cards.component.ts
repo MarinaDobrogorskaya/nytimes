@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {BestArticle} from '../best-article';
 
 @Component({
   selector: 'app-article-cards',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article-cards.component.scss']
 })
 export class ArticleCardsComponent implements OnInit {
-
+  @Input() articles: BestArticle[];
   constructor() { }
 
   ngOnInit() {

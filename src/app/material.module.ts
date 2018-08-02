@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {MatButtonModule, MatSelectModule, MatTableModule, MatTabsModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatSelectModule, MatTableModule, MatTabsModule, MatToolbarModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    MatCardModule,
     MatTableModule,
     MatTabsModule,
     MatSelectModule
