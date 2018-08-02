@@ -1,0 +1,26 @@
+<div class="form-filter" [formGroup]="selectionGroup">
+  <mat-form-field class="the-most">
+    <mat-select placeholder="Category" formControlName="category"
+                (selectionChange)="changeFilterData(selectionGroup.value)">
+      <mat-option *ngFor="let category of categories" [value]="category.value">
+        {{ category.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="the-most">
+    <mat-select placeholder="Section" formControlName="section"
+                (selectionChange)="changeFilterData(selectionGroup.value)">
+      <mat-option *ngFor="let section of sections" [value]="section">
+        {{ section }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="the-most">
+    <mat-select placeholder="Time period" formControlName="period"
+                (selectionChange)="changeFilterData(selectionGroup.value)">
+      <mat-option value="1">Day</mat-option>
+      <mat-option value="7">Week</mat-option>
+      <mat-option value="30">Month</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
