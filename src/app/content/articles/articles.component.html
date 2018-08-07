@@ -1,6 +1,2 @@
-<div>
-  <p>
-    articles works!
-  </p>
-</div>
-
+<app-search (search)="getArticles($event)"></app-search>
+<app-articles-list [articles]="articles"></app-articles-list>

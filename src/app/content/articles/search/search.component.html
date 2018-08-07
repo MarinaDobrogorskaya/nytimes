@@ -1,0 +1,16 @@
+<div class="search">
+  <div class="input">
+    <mat-form-field>
+      <input matInput type="search" [formControl]="query" placeholder="Entered word will be found in article headline">
+    </mat-form-field>
+  </div>
+  <button mat-icon-button (click)="onSearch()">
+    <mat-icon>search</mat-icon>
+  </button>
+  <button mat-icon-button (click)="toggle()">
+    <mat-icon *ngIf="!isOpened">expand_more</mat-icon>
+    <mat-icon *ngIf="isOpened">expand_less</mat-icon>
+  </button>
+</div>
+<app-advanced-search *ngIf="isOpened" (addInfo)="onChange($event)"></app-advanced-search>
+

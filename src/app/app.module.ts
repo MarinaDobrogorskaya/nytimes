@@ -14,6 +14,12 @@ import { FormFilterComponent } from './content/best-articles/form-filter/form-fi
 import {HttpClientModule} from '@angular/common/http';
 import { ArticleCardsComponent } from './content/best-articles/article-cards/article-cards.component';
 import { ArtCardComponent } from './content/best-articles/article-cards/art-card/art-card.component';
+import { ArticlesListComponent } from './content/articles/articles-list/articles-list.component';
+import { SearchComponent } from './content/articles/search/search.component';
+import { AdvancedSearchComponent } from './content/articles/search/advanced-search/advanced-search.component';
+import { ArtItemComponent } from './content/articles/articles-list/art-item/art-item.component';
+import {DatePipe} from './common/pipes/date.pipe';
+import { ProgressBarComponent } from './content/articles/progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,13 @@ import { ArtCardComponent } from './content/best-articles/article-cards/art-card
     BestArticlesComponent,
     FormFilterComponent,
     ArticleCardsComponent,
-    ArtCardComponent
+    ArtCardComponent,
+    ArticlesListComponent,
+    SearchComponent,
+    AdvancedSearchComponent,
+    ArtItemComponent,
+    DatePipe,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,

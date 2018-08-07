@@ -1,0 +1,34 @@
+<div [formGroup]="advSearchForm" class="adv-search">
+  <mat-form-field class="data">
+    <mat-select placeholder="Section" (selectionChange)="onChanges(advSearchForm.value)" formControlName="section">
+      <mat-option *ngFor="let section of sections" [value]="section">
+        {{ section }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="data">
+    <mat-select placeholder="Type of publication" (selectionChange)="onChanges(advSearchForm.value)" formControlName="type">
+      <mat-option *ngFor="let type of types" [value]="type">
+        {{type}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="data">
+    <input matInput [matDatepicker]="picker" (dateChange)="onChanges(advSearchForm.value)"
+           placeholder="From" formControlName="dateFrom">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="data">
+    <input matInput [matDatepicker]="picker2" (dateChange)="onChanges(advSearchForm.value)"
+           placeholder="To" formControlName="dateTo">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2 (changes)="onChanges(advSearchForm.value)"></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="data">
+    <mat-select placeholder="Sort" (selectionChange)="onChanges(advSearchForm.value)" formControlName="sort">
+      <mat-option value="newest">newest</mat-option>
+      <mat-option value="oldest">oldest</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
