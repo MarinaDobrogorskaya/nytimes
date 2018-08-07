@@ -53,7 +53,9 @@ export class ArticlesComponent implements OnInit {
   }
   private changeAcquiredData(obj): void {
     this.criteria.fq = '';
-    this.criteria.sort = obj.sort;
+    if (obj.sort) {
+      this.criteria.sort = obj.sort;
+    }
     if (obj.query) {
       this.criteria.fq += 'headline.search: ' + obj.query;
     }
@@ -79,7 +81,7 @@ export class ArticlesComponent implements OnInit {
     this.inProgress.emit(true);
     this.pageNum = 0;
     this.changeAcquiredData(obj);
-    this.search.getArticles(this.page, this.criteria)
+    this.search.getArticles(this.pageNum, this.criteria)
       .pipe(finalize(() => this.inProgress.emit(false)))
       .subscribe(articles => this.articles = articles);
   }

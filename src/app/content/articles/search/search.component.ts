@@ -9,7 +9,9 @@ import {FormControl} from '@angular/forms';
 export class SearchComponent implements OnInit {
   public query = new FormControl('');
   public isOpened = false;
-  public searchData: any;
+  public searchData = {
+    query: ''
+  };
   @Output() search = new EventEmitter<any>();
   constructor() { }
   toggle(): void {
@@ -18,10 +20,11 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
   onChange(data) {
-    this.searchData = data;
+    Object.assign(this.searchData, data);
   }
   onSearch() {
     this.searchData.query = this.query.value;
+    console.log(this.searchData);
     this.search.emit(this.searchData);
   }
 }

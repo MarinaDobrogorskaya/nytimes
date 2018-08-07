@@ -17,7 +17,7 @@ export class FormFilterComponent implements OnInit {
     'Job Market', 'Magazine', 'membercenter', 'Movies', 'Multimedia', 'NYT Now', 'Obituaries', 'Open', 'Opinion', 'Public Editor',
     'Real Estate', 'Science', 'Sports', 'Style', 'Sunday Review', 'T Magazine', 'Technology', 'The Upshot', 'Theater',
     'Times Insider', 'Today’s Paper', 'Travel', 'U.S.', 'World', 'Your Money', 'all-sections'];
-  @Output() formData = new EventEmitter<any>();
+  @Output() search = new EventEmitter<any>();
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -26,10 +26,10 @@ export class FormFilterComponent implements OnInit {
       section: ['all-sections'],
       period: ['1']
     });
-    this.formData.emit(this.selectionGroup.value);
+    this.search.emit(this.selectionGroup.value);
   }
   changeFilterData(obj): void {
-    this.formData.emit(obj);
+    this.search.emit(obj);
     console.log(obj);
   }
 }

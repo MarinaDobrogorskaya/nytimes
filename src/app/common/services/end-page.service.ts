@@ -7,8 +7,8 @@ export class EndPageService {
   isEnd(): boolean {
     const d = document.documentElement;
     const offset = d.scrollTop + window.innerHeight;
-    const height = d.offsetHeight;
+    const height = d.scrollHeight;
     console.log(offset, height);
-    return offset === height;
+    return Math.round(offset) >= height;
   }
 }

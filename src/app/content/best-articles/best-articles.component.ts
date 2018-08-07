@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {OnInit, Component, HostListener} from '@angular/core';
 import {BestArticle} from './best-article';
 import {BestArtSearchService} from '../../common/services/bestart-search.service';
 
@@ -9,6 +9,7 @@ import {BestArtSearchService} from '../../common/services/bestart-search.service
 })
 export class BestArticlesComponent implements OnInit {
   public articles: BestArticle[];
+  public show = false;
   constructor(private searchService: BestArtSearchService) { }
   getArticles(filters) {
     this.searchService.getBestArticles(filters.category, filters.section, filters.period).subscribe(
@@ -18,7 +19,17 @@ export class BestArticlesComponent implements OnInit {
       }
     );
   }
-  ngOnInit() {
+  @HostListener('window:resize', [])
+  checkWidth() {
+    if (document.documentElement.clientWidth >= 1200) {
+      this.show = true;
+    } else {
+      this.show = false;
+    }
   }
-
+  ngOnInit() {
+    if (document.documentElement.clientWidth <= 1000) {
+      this.show = true;
+    }
+  }
 }

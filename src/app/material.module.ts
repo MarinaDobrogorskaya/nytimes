@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import {
   MatButtonModule,
   MatCardModule, MatDatepickerModule,
-  MatIconModule, MatInputModule, MatListModule, MatNativeDateModule,
+  MatIconModule, MatInputModule, MatListModule, MatNativeDateModule, MatProgressBarModule,
   MatSelectModule,
   MatTableModule,
   MatTabsModule,
@@ -25,7 +25,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatListModule
+    MatListModule,
+    MatProgressBarModule
   ],
   declarations: []
 })

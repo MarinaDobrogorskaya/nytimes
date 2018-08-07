@@ -1,2 +1,2 @@
-<app-form-filter (formData)="getArticles($event)"></app-form-filter>
-<app-article-cards [articles]="articles"></app-article-cards>
+<app-form-filter (search)="getArticles($event)" ></app-form-filter>
+<app-article-cards [articles]="articles" *ngIf="show"></app-article-cards>
