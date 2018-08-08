@@ -15,14 +15,14 @@ export class ArticlesComponent implements OnInit {
   public criteria: any = {
     sort: 'newest'
   };
-  @Output() inProgress = new EventEmitter<boolean>();
+  public inProgress = false;
   public articles: Article[];
   constructor(private search: ArticlesSearchService,
               private page: EndPageService) { }
   ngOnInit() {
-    this.inProgress.emit(true);
+    this.inProgress = true;
     this.search.getArticles('0', this.criteria)
-      .pipe(finalize(() => this.inProgress.emit(false)))
+      .pipe(finalize(() => this.inProgress = false))
       .subscribe(
         articles => {
           this.articles = articles;
@@ -32,12 +32,12 @@ export class ArticlesComponent implements OnInit {
   @HostListener('window:scroll', [])
   newPage() {
     if (this.page.isEnd()) {
-      this.inProgress.emit(true);
+      this.inProgress = true;
       this.pageNum++;
       console.log(this.pageNum);
       this.search
         .getArticles(this.pageNum, this.criteria)
-        .pipe(finalize(() => this.inProgress.emit(false)))
+        .pipe(finalize(() => this.inProgress = false))
         .subscribe(
           articles => {
             this.articles = this.articles.concat(articles);
@@ -78,11 +78,11 @@ export class ArticlesComponent implements OnInit {
   }
 
   getArticles(obj) {
-    this.inProgress.emit(true);
+    this.inProgress = true;
     this.pageNum = 0;
     this.changeAcquiredData(obj);
     this.search.getArticles(this.pageNum, this.criteria)
-      .pipe(finalize(() => this.inProgress.emit(false)))
+      .pipe(finalize(() => this.inProgress = false))
       .subscribe(articles => this.articles = articles);
   }
 }

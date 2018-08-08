@@ -1,2 +1,3 @@
+<app-progress-bar *ngIf="inProgress"></app-progress-bar>
 <app-form-filter (search)="getArticles($event)" ></app-form-filter>
 <app-article-cards [articles]="articles" *ngIf="show"></app-article-cards>

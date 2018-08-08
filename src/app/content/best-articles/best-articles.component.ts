@@ -1,6 +1,7 @@
 import {OnInit, Component, HostListener} from '@angular/core';
 import {BestArticle} from './best-article';
 import {BestArtSearchService} from '../../common/services/bestart-search.service';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-best-articles',
@@ -10,9 +11,13 @@ import {BestArtSearchService} from '../../common/services/bestart-search.service
 export class BestArticlesComponent implements OnInit {
   public articles: BestArticle[];
   public show = false;
+  public inProgress: boolean;
   constructor(private searchService: BestArtSearchService) { }
   getArticles(filters) {
-    this.searchService.getBestArticles(filters.category, filters.section, filters.period).subscribe(
+    this.inProgress = true;
+    this.searchService.getBestArticles(filters.category, filters.section, filters.period)
+      .pipe(finalize(() => this.inProgress = false))
+      .subscribe(
       articles => {
         this.articles = articles;
         console.log(articles);
