@@ -11,9 +11,7 @@ import {finalize} from 'rxjs/operators';
 export class BestArticlesComponent implements OnInit {
   public articles: BestArticle[];
   public sortedArticles: any;
-  public show = false;
   public inProgress = true;
-  public columns = [];
   constructor(private searchService: BestArtSearchService) { }
   getArticles(filters) {
     this.inProgress = true;
@@ -22,8 +20,8 @@ export class BestArticlesComponent implements OnInit {
       .subscribe(
       articles => {
         this.articles = articles;
-        this.columns = new Array(this.countColumns());
-        console.log(articles, this.columns);
+        this.countColumns();
+        console.log(articles);
       }
     );
   }
@@ -33,15 +31,14 @@ export class BestArticlesComponent implements OnInit {
   }
   ngOnInit() {
   }
-  private distributeCards (articles, cols): any {
+  private distributeCards (articles: BestArticle[], cols: number): BestArticle[][] {
     const result = [];
     for (let i = 0; i < cols; i++) {
       result[i] = [];
-      for (let j = i, c = 0; j < articles.length, c < (articles.length / cols); j += cols, c++) {
-        if (articles[j] !== undefined) {
-          result[i][c] = articles[j];
-        }
-      }
+    }
+    for (let i = 0; i < articles.length; i++) {
+      const colIndex = i % cols;
+      result[colIndex].push(articles[i]);
     }
     console.log('Distributed cards ', result);
     return result;

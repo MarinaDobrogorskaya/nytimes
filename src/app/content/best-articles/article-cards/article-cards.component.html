@@ -1,8 +1,8 @@
 <div class="columns-wrapper">
-  <div *ngFor="let column of columns" class="column">
-    <div *ngFor="let article of articles;" class="card">
+  <div *ngFor="let column of articles" class="column">
+    <div *ngFor="let article of column;" class="card">
       <app-art-card [articleData]="article"></app-art-card>
     </div>
   </div>
 </div>
-<pre>{{ articles }}</pre>
+

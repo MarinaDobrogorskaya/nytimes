@@ -8,7 +8,6 @@ import {BestArticle} from '../best-article';
 })
 export class ArticleCardsComponent implements OnInit {
   @Input() articles: BestArticle[][];
-  @Input() columns: any;
   constructor() { }
 
   ngOnInit() {
