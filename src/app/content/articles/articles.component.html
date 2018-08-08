@@ -1,3 +1,4 @@
+<!-- <app-progress-bar *ngIf="inProgress" [color]="'accent'"></app-progress-bar> -->
+<mat-progress-bar *ngIf="inProgress" mode="indeterminate" color="accent"></mat-progress-bar>
 <app-search (search)="getArticles($event)"></app-search>
-<app-progress-bar *ngIf="inProgress"></app-progress-bar>
 <app-articles-list [articles]="articles"></app-articles-list>

@@ -11,7 +11,7 @@ import {finalize} from 'rxjs/operators';
 export class BestArticlesComponent implements OnInit {
   public articles: BestArticle[];
   public show = false;
-  public inProgress: boolean;
+  public inProgress = true;
   constructor(private searchService: BestArtSearchService) { }
   getArticles(filters) {
     this.inProgress = true;

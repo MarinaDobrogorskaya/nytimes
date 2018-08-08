@@ -19,7 +19,6 @@ import { SearchComponent } from './content/articles/search/search.component';
 import { AdvancedSearchComponent } from './content/articles/search/advanced-search/advanced-search.component';
 import { ArtItemComponent } from './content/articles/articles-list/art-item/art-item.component';
 import {DatePipe} from './common/pipes/date.pipe';
-import { ProgressBarComponent } from './content/articles/progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -35,8 +34,7 @@ import { ProgressBarComponent } from './content/articles/progress-bar/progress-b
     SearchComponent,
     AdvancedSearchComponent,
     ArtItemComponent,
-    DatePipe,
-    ProgressBarComponent
+    DatePipe
   ],
   imports: [
     BrowserModule,

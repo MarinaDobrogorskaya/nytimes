@@ -15,6 +15,7 @@ export class ArticlesComponent implements OnInit {
   public criteria: any = {
     sort: 'newest'
   };
+  progressBarColor = 'accent';
   public inProgress = false;
   public articles: Article[];
   constructor(private search: ArticlesSearchService,

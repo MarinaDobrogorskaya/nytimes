@@ -1,14 +1,14 @@
-.search {
-  margin: 16px;
-  display: flex;
-  align-items: center;
-  button {
-    margin-left: 8px;
+.search-form-wrapper {
+  padding: 0 12px;
+  
+  .search-form {
+    width: 100%;
   }
-  .input {
-
-    mat-form-field {
-      width: 100%;
+  
+  div[matSuffix] {
+    mat-icon {
+      display: inline;
+      margin: 4px;
     }
   }
 }
