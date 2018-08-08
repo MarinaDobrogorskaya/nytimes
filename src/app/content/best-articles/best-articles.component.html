@@ -1,3 +1,3 @@
 <mat-progress-bar *ngIf="inProgress" mode="indeterminate" color="accent"></mat-progress-bar>
 <app-form-filter (search)="getArticles($event)" ></app-form-filter>
-<app-article-cards [articles]="articles" *ngIf="show"></app-article-cards>
+<app-article-cards [articles]="sortedArticles" [columns]="columns" *ngIf="show"></app-article-cards>

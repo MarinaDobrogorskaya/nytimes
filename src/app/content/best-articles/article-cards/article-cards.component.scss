@@ -1,8 +1,11 @@
 .column {
   padding: 0 16px;
+  display: flex;
+  flex-direction: column;
 }
-.card {
-  float: left;
+.columns-wrapper {
+  width: 100%;
+  display: flex;
 }
 @media screen and (max-width: 464px) {
   .card {
