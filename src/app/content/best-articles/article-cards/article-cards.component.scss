@@ -1,26 +1,28 @@
 .column {
-  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
 }
-.card {
-  float: left;
+.columns-wrapper {
+  padding: 0 8px;
+  display: flex;
 }
 @media screen and (max-width: 464px) {
-  .card {
+  .column {
     width: 100%;
   }
 }
 @media screen and (min-width: 464px) and (max-width: 896px){
-  .card {
+  .column {
     width: 50%;
   }
 }
 @media screen and (min-width: 896px) and (max-width: 1328px){
-  .card {
+  .column {
     width: (100%/3);
   }
 }
 @media screen and (min-width: 1328px) and (max-width: 2160px){
-  .card {
+  .column {
     width: 25%;
   }
 }

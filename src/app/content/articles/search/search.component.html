@@ -1,16 +1,15 @@
-<div class="search">
-  <div class="input">
-    <mat-form-field>
-      <input matInput type="search" [formControl]="query" placeholder="Entered word will be found in article headline">
-    </mat-form-field>
-  </div>
-  <button mat-icon-button (click)="onSearch()">
-    <mat-icon>search</mat-icon>
-  </button>
-  <button mat-icon-button (click)="toggle()">
-    <mat-icon *ngIf="!isOpened">expand_more</mat-icon>
-    <mat-icon *ngIf="isOpened">expand_less</mat-icon>
-  </button>
+
+<div class="search-form-wrapper">
+  <mat-form-field appearance="standard" class="search-form">
+    <mat-label>Search</mat-label>
+    <input matInput type="search" [formControl]="query" placeholder="Enter search word">
+    <div matSuffix>
+      <mat-icon *ngIf="!isOpened" (click)="toggle()">expand_more</mat-icon>
+      <mat-icon *ngIf="isOpened" (click)="toggle()">expand_less</mat-icon>
+      <mat-icon (click)="onSearch()">search</mat-icon>
+    </div>
+    <mat-hint>Entered word will be found in article headline</mat-hint>
+  </mat-form-field>
 </div>
 <app-advanced-search *ngIf="isOpened" (addInfo)="onChange($event)"></app-advanced-search>
 

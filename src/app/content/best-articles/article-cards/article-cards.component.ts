@@ -7,7 +7,7 @@ import {BestArticle} from '../best-article';
   styleUrls: ['./article-cards.component.scss']
 })
 export class ArticleCardsComponent implements OnInit {
-  @Input() articles: BestArticle[];
+  @Input() articles: BestArticle[][];
   constructor() { }
 
   ngOnInit() {
