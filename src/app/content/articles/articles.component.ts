@@ -1,8 +1,9 @@
-import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
+import {Component,  HostListener, OnInit} from '@angular/core';
 import {ArticlesSearchService} from '../../common/services/articles-search.service';
 import {finalize} from 'rxjs/operators';
 import {Article} from './article';
 import {EndPageService} from '../../common/services/end-page.service';
+import {ScrollUtils, FormatUtils} from '../../common/utils/utils';
 
 @Component({
   selector: 'app-articles',
@@ -17,8 +18,7 @@ export class ArticlesComponent implements OnInit {
   };
   public inProgress = false;
   public articles: Article[];
-  constructor(private search: ArticlesSearchService,
-              private page: EndPageService) { }
+  constructor(private search: ArticlesSearchService) { }
   ngOnInit() {
     this.inProgress = true;
     this.search.getArticles('0', this.criteria)
@@ -30,8 +30,8 @@ export class ArticlesComponent implements OnInit {
       );
   }
   @HostListener('window:scroll', [])
-  newPage() {
-    if (this.page.isEnd()) {
+  createNewPage() {
+    if (ScrollUtils.isEnd()) {
       this.inProgress = true;
       this.pageNum++;
       console.log(this.pageNum);
@@ -44,12 +44,6 @@ export class ArticlesComponent implements OnInit {
           }
         );
     }
-  }
-  private getStringDate(date: Date): string {
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    return `${year}-${(month < 10) ? '0' + month : month}-${(day < 10) ? '0' + day : day}`;
   }
   private changeAcquiredData(obj): void {
     this.criteria.fq = '';
@@ -70,10 +64,10 @@ export class ArticlesComponent implements OnInit {
         : this.criteria.fq +=  'type_of_material: ' + obj.type;
     }
     if (obj.dateFrom) {
-      this.criteria.dateFrom = this.getStringDate(obj.dateFrom);
+      this.criteria.dateFrom = FormatUtils.dateToSql(obj.dateFrom);
     }
     if (obj.dateTo) {
-      this.criteria.dateTo = this.getStringDate(obj.dateTo);
+      this.criteria.dateTo = FormatUtils.dateToSql(obj.dateTo);
     }
   }
 

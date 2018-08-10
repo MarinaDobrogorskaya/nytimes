@@ -10,7 +10,7 @@ import {finalize} from 'rxjs/operators';
 })
 export class BestArticlesComponent implements OnInit {
   public articles: BestArticle[];
-  public sortedArticles: any;
+  public sortedArticles: BestArticle[][];
   public inProgress = true;
   constructor(private searchService: BestArtSearchService) { }
   getArticles(filters) {
@@ -43,23 +43,10 @@ export class BestArticlesComponent implements OnInit {
     console.log('Distributed cards ', result);
     return result;
   }
-  countColumns () {
-    const d = document.documentElement.clientWidth;
-    if (d <= 464) {
-      this.sortedArticles = this.distributeCards(this.articles, 1);
-      return 1;
-    } else if (d <= 896 && d > 464) {
-      this.sortedArticles = this.distributeCards(this.articles, 2);
-      return 2;
-    } else if (d > 896 && d <= 1328) {
-      this.sortedArticles = this.distributeCards(this.articles, 3);
-      return 3;
-    } else if (d > 1328 && d <= 2160) {
-      this.sortedArticles = this.distributeCards(this.articles, 4);
-      return 4;
-    } else if (d > 2160) {
-      this.sortedArticles = this.distributeCards(this.articles, 5);
-      return 5;
-    }
+  countColumns (): void {
+    let d = document.documentElement.clientWidth;
+    d -= 8 * 2; // minus lateral indents
+    const numOfCols = Math.ceil(d / (400 + 16));
+    this.sortedArticles = this.distributeCards(this.articles, numOfCols);
   }
 }
