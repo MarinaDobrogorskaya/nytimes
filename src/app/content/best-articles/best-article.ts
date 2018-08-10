@@ -5,3 +5,4 @@ export class BestArticle {
   published: string;
   img?: string;
 }
+

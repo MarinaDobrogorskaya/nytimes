@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {Search} from './search-events';
 
 @Component({
   selector: 'app-form-filter',
@@ -17,7 +18,7 @@ export class FormFilterComponent implements OnInit {
     'Job Market', 'Magazine', 'membercenter', 'Movies', 'Multimedia', 'NYT Now', 'Obituaries', 'Open', 'Opinion', 'Public Editor',
     'Real Estate', 'Science', 'Sports', 'Style', 'Sunday Review', 'T Magazine', 'Technology', 'The Upshot', 'Theater',
     'Times Insider', 'Today’s Paper', 'Travel', 'U.S.', 'World', 'Your Money', 'all-sections'];
-  @Output() search = new EventEmitter<any>();
+  @Output() search = new EventEmitter<Search>();
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
