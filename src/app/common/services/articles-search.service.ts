@@ -3,16 +3,17 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Article } from '../../content/articles/article';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {A_URL, API_KEY} from '../../constants';
 
 @Injectable()
 export class ArticlesSearchService {
-  public url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
+  public url = A_URL;
 
   constructor(private http: HttpClient) { }
   getArticles(page, criteria?): Observable<Article[]> {
-    let options = {
+    const options = {
       params: new HttpParams()
-        .set('api-key', '585897e1567c46de9fb109685a617fd9')
+        .set('api-key', API_KEY)
         .set('page', page)
         .set('sort', criteria.sort)
     };
