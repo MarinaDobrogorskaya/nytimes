@@ -1,10 +1,10 @@
-export interface AdvansedSearch {
+export interface AdvancedSearch {
   section?: string;
   type?: string;
-  dateFrom?: string;
-  dateTo?: string;
+  dateFrom?: Date;
+  dateTo?: Date;
   sort?: string;
 }
-export interface Search extends AdvansedSearch {
+export interface Search extends AdvancedSearch {
   query: string;
 }

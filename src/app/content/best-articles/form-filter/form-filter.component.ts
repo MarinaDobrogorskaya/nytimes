@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Search} from './search-events';
+import {BA_SECTIONS} from '../../../constants';
 
 @Component({
   selector: 'app-form-filter',
@@ -14,10 +15,7 @@ export class FormFilterComponent implements OnInit {
     { name: 'The most shared', value: 'mostshared' },
     { name: 'The most emailed', value: 'mostemailed' }
   ];
-  public sections = ['Arts', 'Automobiles', 'Blogs', 'Books', 'Business Day', 'Education', 'Fashion Style', 'Food', 'Health',
-    'Job Market', 'Magazine', 'membercenter', 'Movies', 'Multimedia', 'NYT Now', 'Obituaries', 'Open', 'Opinion', 'Public Editor',
-    'Real Estate', 'Science', 'Sports', 'Style', 'Sunday Review', 'T Magazine', 'Technology', 'The Upshot', 'Theater',
-    'Times Insider', 'Today’s Paper', 'Travel', 'U.S.', 'World', 'Your Money', 'all-sections'];
+  public sections = BA_SECTIONS;
   @Output() search = new EventEmitter<Search>();
   constructor(private _formBuilder: FormBuilder) { }
 

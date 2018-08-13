@@ -1,5 +1,5 @@
 export class Article {
-  headline: any;
+  headline: string;
   web_url: string;
   snippet: string;
   pub_date: string;

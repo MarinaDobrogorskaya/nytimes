@@ -1,6 +1,6 @@
-import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {Search} from './search-events';
+import {AdvancedSearch, Search} from './search-events';
 import {Renderer2} from '@angular/core';
 
 @Component({
@@ -9,10 +9,11 @@ import {Renderer2} from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  public input = document.getElementsByTagName('input');
+  private TAG = 'SearchComponent >';
+  private input = document.getElementsByTagName('input');
   public query = new FormControl('');
   public isOpened = false;
-  public searchData: Search = {
+  private searchData: Search = {
     query: ''
   };
   @Output() search = new EventEmitter<Search>();
@@ -27,12 +28,12 @@ export class SearchComponent implements OnInit {
       }
     });
   }
-  onChange(data) {
-    Object.assign(this.searchData, data);
+  onChange(data: AdvancedSearch) {
+    Object.assign<Search, AdvancedSearch>(this.searchData, data as AdvancedSearch);
   }
   onSearch() {
     this.searchData.query = this.query.value;
-    console.log(this.searchData);
+    console.log(`${this.TAG} onSearch: this.searchData - ${this.searchData}`);
     this.search.emit(this.searchData);
   }
 }

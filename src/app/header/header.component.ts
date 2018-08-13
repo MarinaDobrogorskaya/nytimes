@@ -9,7 +9,7 @@ import {FormControl} from '@angular/forms';
   providers: []
 })
 export class HeaderComponent {
-  public languages = ['EN', 'RU', 'UA'];
+  public languages = ['EN', 'RU', 'UA']; // not used now
   public isActiveArt = true;
   public isActiveBest: boolean;
   constructor() { }

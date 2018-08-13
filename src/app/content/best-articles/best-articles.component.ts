@@ -1,6 +1,6 @@
 import {OnInit, Component, HostListener} from '@angular/core';
 import {BestArticle} from './best-article';
-import {BestArtSearchService} from '../../common/services/bestart-search.service';
+import {BestArtSearchService} from './bestart-search.service';
 import {finalize} from 'rxjs/operators';
 
 @Component({
@@ -9,6 +9,7 @@ import {finalize} from 'rxjs/operators';
   styleUrls: ['./best-articles.component.scss']
 })
 export class BestArticlesComponent implements OnInit {
+  private TAG = 'BestArticlesComponent >';
   public articles: BestArticle[];
   public sortedArticles: BestArticle[][];
   public inProgress = true;
@@ -20,14 +21,14 @@ export class BestArticlesComponent implements OnInit {
       .subscribe(
       articles => {
         this.articles = articles;
-        this.countColumns();
-        console.log(articles);
+        this.recountColumns();
+        console.log(`${this.TAG} onSearchArticles: articles - `, articles);
       }
     );
   }
   @HostListener('window:resize', [])
-  checkWidth() {
-    this.countColumns();
+  onWindowResize() {
+    this.recountColumns();
   }
   ngOnInit() {
   }
@@ -40,13 +41,15 @@ export class BestArticlesComponent implements OnInit {
       const colIndex = i % cols;
       result[colIndex].push(articles[i]);
     }
-    console.log('Distributed cards ', result);
+    console.log(`${this.TAG} distributeCards: result - ${result}`);
     return result;
   }
-  countColumns (): void {
+  recountColumns (): void {
     let d = document.documentElement.clientWidth;
-    d -= 8 * 2; // minus lateral indents
-    const numOfCols = Math.ceil(d / (400 + 16));
+    const maxCardWidth = 400;
+    const indent = 8;
+    d -= indent * 2; // minus lateral indents
+    const numOfCols = Math.ceil(d / (maxCardWidth + indent * 2));
     this.sortedArticles = this.distributeCards(this.articles, numOfCols);
   }
 }

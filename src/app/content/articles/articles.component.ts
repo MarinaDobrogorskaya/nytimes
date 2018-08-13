@@ -1,19 +1,20 @@
 import {Component,  HostListener, OnInit} from '@angular/core';
-import {ArticlesSearchService} from '../../common/services/articles-search.service';
+import {ArticlesSearchService} from './articles-search.service';
 import {finalize} from 'rxjs/operators';
 import {Article} from './article';
-import {EndPageService} from '../../common/services/end-page.service';
+import {Search} from './search/search-events';
 import {ScrollUtils, FormatUtils} from '../../common/utils/utils';
 
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.scss'],
-  providers: [ArticlesSearchService, EndPageService]
+  providers: [ArticlesSearchService]
 })
 export class ArticlesComponent implements OnInit {
-  public pageNum = 0;
-  public criteria: any = {
+  private TAG = 'ArticlesComponent >';
+  private pageNum = 0;
+  public criteria: Criteria = {
     sort: 'newest'
   };
   public inProgress = false;
@@ -30,11 +31,11 @@ export class ArticlesComponent implements OnInit {
       );
   }
   @HostListener('window:scroll', [])
-  createNewPage() {
+  onCreateNewPage() {
     if (ScrollUtils.isEnd()) {
       this.inProgress = true;
       this.pageNum++;
-      console.log(this.pageNum);
+      console.log(`${this.TAG} createNewPage: this.pageNum - ${this.pageNum}`);
       this.search
         .getArticles(this.pageNum, this.criteria)
         .pipe(finalize(() => this.inProgress = false))
@@ -45,7 +46,7 @@ export class ArticlesComponent implements OnInit {
         );
     }
   }
-  private changeAcquiredData(obj): void {
+  private changeAcquiredData(obj: Search): void {
     this.criteria.fq = '';
     if (obj.sort) {
       this.criteria.sort = obj.sort;
@@ -71,7 +72,7 @@ export class ArticlesComponent implements OnInit {
     }
   }
 
-  getArticles(obj) {
+  onSearchArticles(obj: Search) {
     this.inProgress = true;
     this.pageNum = 0;
     this.changeAcquiredData(obj);
@@ -79,4 +80,10 @@ export class ArticlesComponent implements OnInit {
       .pipe(finalize(() => this.inProgress = false))
       .subscribe(articles => this.articles = articles);
   }
+}
+interface Criteria {
+  fq?: string;
+  sort?: string;
+  dateFrom?: string;
+  dateTo?: string;
 }
