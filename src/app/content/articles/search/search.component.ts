@@ -8,7 +8,6 @@ import {AdvancedSearch, Search} from './search-events';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  private TAG = 'SearchComponent >';
   public query = new FormControl('');
   public isOpened = false;
   private searchData: Search = {
@@ -22,11 +21,10 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
   onChange(data: AdvancedSearch): void {
-    Object.assign<Search, AdvancedSearch>(this.searchData, data as AdvancedSearch);
+    Object.assign<Search, AdvancedSearch>(this.searchData, data);
   }
   onSearch(): void {
     this.searchData.query = this.query.value;
-    console.log(`${this.TAG} onSearch: this.searchData - ${this.searchData}`);
     this.search.emit(this.searchData);
   }
   onEnterPressed(event: KeyboardEvent): void {

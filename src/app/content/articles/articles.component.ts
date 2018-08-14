@@ -56,12 +56,12 @@ export class ArticlesComponent implements OnInit {
     }
     if (obj.section) {
       this.criteria.fq.length !== 0
-        ? this.criteria.fq += 'AND section_name: ' + obj.section
+        ? this.criteria.fq += ' AND section_name: ' + obj.section
         : this.criteria.fq +=  'section_name: ' + obj.section;
     }
     if (obj.type) {
       this.criteria.fq.length !== 0
-        ? this.criteria.fq += 'AND type_of_material: ' + obj.type
+        ? this.criteria.fq += ' AND type_of_material: ' + obj.type
         : this.criteria.fq +=  'type_of_material: ' + obj.type;
     }
     if (obj.dateFrom) {

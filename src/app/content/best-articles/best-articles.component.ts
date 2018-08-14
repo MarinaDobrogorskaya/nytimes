@@ -41,7 +41,7 @@ export class BestArticlesComponent implements OnInit {
       const colIndex = i % cols;
       result[colIndex].push(articles[i]);
     }
-    console.log(`${this.TAG} distributeCards: result - ${result}`);
+    console.log(`${this.TAG} distributeCards: result - `, result);
     return result;
   }
   recountColumns (): void {

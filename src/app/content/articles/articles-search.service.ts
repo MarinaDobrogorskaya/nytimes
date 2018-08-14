@@ -10,16 +10,25 @@ export class ArticlesSearchService {
   private url = A_URL;
   constructor(private http: HttpClient) {}
   getArticles(page, criteria?): Observable<Article[]> {
+    console.log('Articles will be search by criteria: ', criteria);
     const options = {
       params: new HttpParams()
         .set('api-key', API_KEY)
         .set('page', page)
     };
-    ['sort', 'fg', 'from', 'to'].forEach(propName => {
-      if (criteria[propName]) {
-        options.params = options.params.set(propName, criteria[propName]);
-        }
-    });
+    if (criteria.sort) {
+      options.params = options.params.set('sort', criteria.sort);
+    }
+    if (criteria.fq) {
+      options.params = options.params.set('fq', criteria.fq);
+    }
+    if (criteria.from) {
+      options.params = options.params.set('begin_date', criteria.from);
+    }
+    if (criteria.to) {
+      options.params = options.params.set('end_date', criteria.to);
+    }
+    console.log('HTTP options: ', options);
     return this.http.get<any>(this.url, options).pipe(map(obj => {
       const articles = obj['response']['docs'];
       return articles.map(article => {
