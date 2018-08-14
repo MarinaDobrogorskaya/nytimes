@@ -5,6 +5,7 @@ This project was created for searching articles in the NewYorkTimes
 ## What you need for running project
  - Node v9.11.1 or latest
  - npm v5.6.0 or latest
+ 
  Run `npm install` for installing dependencies.
  
 ## Development server
