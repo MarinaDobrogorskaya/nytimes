@@ -1,11 +1,12 @@
 .search-form-wrapper {
   padding: 0 12px;
-  
+
   .search-form {
     width: 100%;
   }
-  
+
   div[matSuffix] {
+    cursor: pointer;
     mat-icon {
       display: inline;
       margin: 4px;
