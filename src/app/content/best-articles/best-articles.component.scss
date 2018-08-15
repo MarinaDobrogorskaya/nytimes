@@ -1,1 +1,11 @@
-
+@import "../../variables";
+mat-progress-bar {
+  position: fixed;
+  top: $header-height;
+  left: 0;
+}
+@media screen and (max-width: 400px) {
+  mat-progress-bar {
+    top: $small-header-height;
+  }
+}
